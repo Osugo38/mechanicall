@@ -26,7 +26,7 @@
 
   <title>MECHANICALL</title>
 </head>
-<body>
+<body onload="initialize()">
   <div id="mwanzo1">
     <header>
       <div class="menu-toggle" id="hamburger">
@@ -107,7 +107,7 @@
 
                         </select><br>
                         <p>OR</p>
-                        <button type="button" class="btn btn-outline-primary btn-lg btn-block">Locate me </button>
+                        <button type="button" onclick="getLocation()" class="btn btn-outline-primary btn-lg btn-block">Locate me </button>
                       </div>
                     <button type="button"  id="buttona" class="btn btn-outline-primary">Mechanic</button>
                     <button type="button"  id="buttona" class="btn btn-outline-primary">Tow Truck</button>
@@ -123,6 +123,7 @@
           </div>
 
               <div id="contactForm" >
+                <p id="demo"></p>
                 <h2>Help us understand your problem</h2>
                 <small><em>Which part is causing the breakdown</em></small>
                 <form action="">
@@ -206,7 +207,7 @@
 
 
 
-  
+
 <div class="container" id="about">
 
   <h3 id="title">ABOUT US</h3>
@@ -405,6 +406,40 @@
 
     });
   </script>
-    </body>
+
+  <script>
+    var x = document.getElementById("demo");
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      x.innerHTML = "Latitude: " + position.coords.latitude +
+              "<br>Longitude: " + position.coords.longitude;
+    }
+
+    function showError(error) {
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          x.innerHTML = "User denied the request for Geolocation."
+          break;
+        case error.POSITION_UNAVAILABLE:
+          x.innerHTML = "Location information is unavailable."
+          break;
+        case error.TIMEOUT:
+          x.innerHTML = "The request to get user location timed out."
+          break;
+        case error.UNKNOWN_ERROR:
+          x.innerHTML = "An unknown error occurred."
+          break;
+      }
+    }
+  </script>
+    </body >
 
     </html>

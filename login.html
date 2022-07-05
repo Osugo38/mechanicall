@@ -52,18 +52,18 @@
     <div class="white-panel">
         <div class="login-show">
             <h2>LOGIN</h2>
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <input type="button" value="Login">
+            <input type="text" name="Email" placeholder="Email" required>
+            <input type="password" name="Password" placeholder="Password" required>
+            <input type="button" value="Login" onclick="validateform()">
             <a href="">Forgot password?</a>
         </div>
         <div class="register-show">
             <h2>REGISTER</h2>
-            <input type="text" placeholder="Username">
-            <input type="text" placeholder="Phone number">
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <input type="password" placeholder="Confirm Password">
+            <input type="text" name="UserName" placeholder="Username" required>
+            <input type="text" name="PhoneNumber" placeholder="Phone number" required>
+            <input type="text" name="Email" placeholder="Email" required>
+            <input type="password" name="Password" placeholder="Password" required>
+            <input type="password" placeholder="Confirm Password" required>
             <input type="button" value="Register">
         </div>
     </div>
@@ -98,5 +98,43 @@
     });
 
 </script>
+        <script>
+            function validateform(){
+                var name=document.getElementsByName("Email").value;
+                var password=document.getElementsByName("Password").value;
+
+                if (name==null || name==""){
+                    alert("Name can't be blank");
+                    return false;
+                }else if(password.length<6){
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+            }
+        </script>
+
+        <script>
+            function validateform(){
+                var name=document.getElementsByName("Email").value;
+                var password=document.getElementsByName("Password").value;
+
+                if (name==null || name==""){
+                    alert("Name can't be blank");
+                    return false;
+                }else if(password.length<6){
+                    alert("Password must be at least 6 characters long.");
+                    return false;
+                }
+            }else if(UserName==null || UserName==""){
+                alert("Username cannot be empty.");
+                return false;
+            }
+            }else if(.length<10){
+                alert("Phone number must be at least 10 characters long.");
+                return false;
+            }
+
+            }
+        </script>
 </body>
 </html>
